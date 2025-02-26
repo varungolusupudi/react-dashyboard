@@ -1,18 +1,18 @@
-import React from 'react';
-import { useState, useEffect } from 'react';
 
-const Card = () => {
+const Card = ({cardDetails}) => {
     return (
-        <div className="border-solid border-2 border-blue-900 text-left w-full max-w-md mx-auto p-6">
-            <div className="rounded-lg border-solid border-2 border-black p-6 text-left">
-                <h1 className="my-4 text-3xl font-bold">Name</h1>{/* Name */}
-                <h2 className="my-4 text-xl font-bold">Username</h2> {/* Username */}
-                <h2 className="my-4 text-xl font-bold">Email</h2> {/* Email */}
-                <h2 className="my-4 text-xl font-bold">Address</h2> {/* Address */}
-                <h2 className="my-4 text-xl font-bold">Phone</h2> {/* Phone */}
-                <h2 className="my-4 text-xl font-bold">Website</h2> {/* Website */}
-                <h2 className="my-4 text-xl font-bold">Company</h2> {/* Company */}
-            </div>
+        <div className="m-6 max-w-auto p-6">
+                {cardDetails.map(card => (
+                    <div className="text-left mx-auto max-w-lg bg-white shadow-lg border border-blue-500 rounded-lg p-10 mt-6">
+                        <h1 className="font-bold text-2xl text-gray-900">{card.name}</h1>
+                        <h2 className="text-gray-700">{card.username}</h2>
+                        <h2 className="text-gray-700">{card.email}</h2>
+                        <h2 className="text-gray-700">{card.address.street}, {card.address.city}, {card.address.zipcode}</h2>
+                        <h2 className="text-gray-700">{card.phone}</h2>
+                        <h2 className="text-blue-600 hover:underline cursor-pointer">{card.website}</h2>
+                        <h2 className="text-gray-700">{card.company.name}</h2>
+                    </div>
+                ))}
         </div>
     );
 }
